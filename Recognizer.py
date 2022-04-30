@@ -1,6 +1,6 @@
 import cv2
 from FaceDetection.face_detection import face
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 import os
 from embedding import emb
@@ -90,7 +90,7 @@ def Recognition(subject):
 
                 
                 
-        cv2.imshow('Say Cheese and Press "Q" to Quite',frame)
+        cv2.imshow('Say Cheese and Press "Q" to Quit',frame)
         if(cv2.waitKey(1) & 0XFF==ord('q')):
             break
     cap.release()

@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import warnings
 import tkinter as tk
+from tkinter import messagebox
 warnings.filterwarnings("ignore")
 
 
@@ -17,21 +18,21 @@ def Generate_Data(Name,Roll_no):
        
         mydb = myclient["students"]
 
-        hindi_subject = mydb["Hindi"]
-        english_subject= mydb["English"]
+        enroll = mydb["Enrollment"]
+        
 
-        mydict = [{"Name":key,"Roll_number":value,"Attendance":0}]
-        x = hindi_subject.insert_many(mydict)
-        y = english_subject.insert_many(mydict)
-
+        mydict = [{"Name":key,"Roll_number":value}]
+        x = enroll.insert_many(mydict)
+       
+        
         print("Student Enrolled Successfully in Hindi and English Subjects")
 
 
     def input_information():
         name=Name
         roll_no=Roll_no
-        parent_dir="people/"
-        final_path=roll_no+name
+        parent_dir="images/"
+        final_path=roll_no+"_"+name
         path=os.path.join(parent_dir,final_path)
         enter_CSV(name,roll_no)   ## pushing in CSV File
         pushmongo(name,roll_no)   ## Pushing in mongoDB database
@@ -75,9 +76,9 @@ def Generate_Data(Name,Roll_no):
         cv2.imshow('frame',frame)
         cv2.waitKey(100)
 
-        if( (pic_no>30) | (0XFF==ord('a'))):
+        if( (pic_no>5) | (0XFF==ord('a'))):
             break
-
+    messagebox.showinfo("Successed", "Student Enrolment Succuessfull")        
     cap.release()
     cv2.destroyAllWindows()
     return
