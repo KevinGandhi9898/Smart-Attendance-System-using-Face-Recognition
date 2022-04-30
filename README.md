@@ -1,12 +1,4 @@
 # **Smart Attendance System Using Face Recognition**
-Finally brushing up on this piece which I started as my fourth-year project. In a nutshell, This is an automated attendance system that eliminates the manual efforts which are involved. The overall accuracy of around 85% and is highly dependent on the lighting conditions. For now, I have created the system for English and Hindi lectures which can be further extended to more lectures/subjects. Everything is automated from enrolling students in MongoDB, to creating directories, and saving the marked attendance.
-
-
-
-This is the overview of the UI
-
-
-![alt text](images/Main_UI.png)
 
 The project is divided into the following sections:
 1. Generating Training data/ Students pic and enrolling them in MongoDB database in all the collections(Hindi and English)_and a CSV file named Students Enrollment
@@ -74,27 +66,6 @@ Diving deep into the process:
 
 8. After taking 30 images the window(frame) is automatically destroyed<br/>
 9. Following the above steps, new students can be enrolled<br/>
-
-
-
-# - **Model Training**
-
-1. After taking pictures of the desired students now you can click on Train the model Button<br/>
-2. The control is shifted to ModelTraining() function in Model_train.py<br/>
-3. Number of classes are then calculated by reading the Student_Enrollment.csv using pandas and calculating the shape[0]<br/>
-4. Learning rate is set to 0.01, epochs to 400 and batch_size to 16, hyperparameters can be further tweaked for better performance<br/>
-5. Then the folders from People folder are sorted and read to extract the images<br/>
-6. Images are resized to (160,160) then embeddings are extracted using pre-trained model "facenet_keras.h5"<br/>
-7. The embeddings are appended to a list and then converted to NumPy array for Training<br/>
-8. I have used Adam optimizer and the following are the layers:
-	1. Input layer 128 Neurons followed by Relu Activation
-	2. 3 Hidden layers with 64, 32 and 16 neurons respectively
-	3. Output Layer with Softmax Activation<br/>
-![alt text](images/10.png)<br/>
-9. The model takes around 30-40 seconds for training and saved as "Face_recoginition. Model" in the Model directory<br/>
-![alt text](images/11.png)<br/>
-
-
 
 # - **Face Recognition/ Take Attendance**
 1. On clicking the class (Hindi/English) Radiobutton, you can click on Take attendance
